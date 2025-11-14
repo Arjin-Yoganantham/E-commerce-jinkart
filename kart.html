@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JINKART - Shop Smart, Live Better!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="kart.js"></script>
+  <script src="kartelement.js"></script>
+
+  <style>@view-transition { navigation: auto; }</style>
+ 
+ </head>
+ <body><!-- Navigation Header -->
+  <nav class="navbar">
+   <div class="container">
+    <div class="navbar-content"><!-- Logo -->
+     <div class="logo-section">
+      <div class="logo-icon"><span>🛒</span>
+      </div>
+      <div>
+       <h1 id="store-name" class="gradient-text" style="margin-bottom: 0; font-size: 1.875rem;">JINKART</h1>
+       <p id="store-tagline" style="margin-bottom: 0; font-size: 0.875rem; color: var(--gray-600); font-weight: 500;">Shop Smart, Live Better!</p>
+      </div>
+     </div><!-- Navigation Menu -->
+     <div class="nav-menu"><button class="nav-item bg-gradient-primary" data-page="home">🏠 Home</button> <button class="nav-item bg-gradient-secondary" data-page="products">📦 Products</button> <button class="nav-item bg-gradient-success" data-page="about">ℹ️ About Us</button> <button class="nav-item bg-gradient-warning" data-page="contact">📞 Contact Us</button>
+     </div><!-- User Actions -->
+     <div class="user-actions"><button id="wishlist-btn" class="icon-btn" style="color: #f56565;"> ❤️ <span id="wishlist-count" class="badge">0</span> </button> <button id="cart-btn" class="icon-btn" style="color: #3b82f6;"> 🛒 <span id="cart-count" class="badge" style="background: #3b82f6;">0</span> </button> <button id="login-btn" class="login-btn">Login</button>
+     </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="mobile-menu-btn"> <span>☰</span> </button>
+    </div>
+   </div><!-- Mobile Menu -->
+   <div id="mobile-menu" class="mobile-menu hidden">
+    <div class="mobile-menu-content"><button class="mobile-nav-item" data-page="home">🏠 Home</button> <button class="mobile-nav-item" data-page="products">📦 Products</button> <button class="mobile-nav-item" data-page="about">ℹ️ About Us</button> <button class="mobile-nav-item" data-page="contact">📞 Contact Us</button>
+    </div>
+   </div>
+  </nav><!-- Main Content Area -->
+  <main class="main-content">
+   <div class="container"><!-- Home Page -->
+    <div id="home-page" class="page-content"><!-- Hero Section -->
+     <section class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+       <h2 class="hero-title">Welcome to JINKART</h2>
+       <p id="welcome-message" class="hero-subtitle">Welcome to JINKART - Your Ultimate Shopping Paradise!</p>
+       <div class="hero-buttons"><button class="btn btn-primary" data-page="products">🛍️ Shop Now</button> <button class="btn btn-secondary" data-page="about">✨ Learn More</button>
+       </div>
+      </div>
+      <div class="hero-emoji hero-emoji-1">
+       🎉
+      </div>
+      <div class="hero-emoji hero-emoji-2">
+       🌟
+      </div>
+      <div class="hero-emoji hero-emoji-3">
+       💎
+      </div>
+     </section><!-- Quick Stats -->
+     <div class="stats-grid">
+      <div class="stat-card bg-gradient-primary">
+       <div class="stat-icon">
+        📦
+       </div>
+       <h3 class="stat-title">Orders</h3>
+       <p id="orders-count" class="stat-value">0</p>
+      </div>
+      <div class="stat-card bg-gradient-secondary">
+       <div class="stat-icon">
+        ❤️
+       </div>
+       <h3 class="stat-title">Wishlist</h3>
+       <p id="wishlist-display-count" class="stat-value">0</p>
+      </div>
+      <div class="stat-card bg-gradient-warning">
+       <div class="stat-icon">
+        ⭐
+       </div>
+       <h3 class="stat-title">Reviews</h3>
+       <p id="reviews-count" class="stat-value">0</p>
+      </div>
+      <div class="stat-card bg-gradient-success">
+       <div class="stat-icon">
+        🎯
+       </div>
+       <h3 class="stat-title">Products</h3>
+       <p class="stat-value">40+</p>
+      </div>
+     </div><!-- Featured Products -->
+     <section style="margin-bottom: 2rem;">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">🔥 Featured Products</h3>
+      <div class="grid grid-4" id="featured-products"><!-- Products will be populated here -->
+      </div>
+     </section>
+    </div><!-- Products Page -->
+    <div id="products-page" class="page-content hidden">
+     <h2 class="gradient-text" style="margin-bottom: 2rem;">🛍️ Our Amazing Products</h2><!-- Product Categories -->
+     <div class="category-filters"><button class="category-filter bg-gradient-rainbow" data-category="all">🛍️ All Products</button> <button class="category-filter category-electronics" data-category="electronics">📱 Electronics</button> <button class="category-filter category-clothing" data-category="clothing">👕 Fashion</button> <button class="category-filter category-home" data-category="home">🏠 Home &amp; Garden</button> <button class="category-filter category-books" data-category="books">📚 Books</button> <button class="category-filter category-sports" data-category="sports">⚽ Sports</button> <button class="category-filter category-beauty" data-category="beauty">💄 Beauty</button> <button class="category-filter category-toys" data-category="toys">🧸 Toys</button>
+     </div><!-- Products Grid -->
+     <div class="grid grid-4" id="products-grid"><!-- Products will be populated here -->
+     </div>
+    </div><!-- About Us Page -->
+    <div id="about-page" class="page-content hidden">
+     <div style="max-width: 800px; margin: 0 auto;">
+      <h2 class="gradient-text" style="margin-bottom: 2rem;">About JINKART</h2>
+      <div class="dashboard-content" style="margin-bottom: 2rem;">
+       <h3 class="gradient-text" style="margin-bottom: 1.5rem;">Our Story</h3>
+       <p style="font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">JINKART was founded with a revolutionary vision: to transform online shopping into an extraordinary experience filled with joy, convenience, and unbeatable value. We believe that shopping should be more than just a transaction – it should be an adventure that brings happiness to your everyday life.</p>
+       <h3 class="gradient-text" style="margin-bottom: 1.5rem;">Why Choose JINKART?</h3>
+       <div class="grid grid-2" style="gap: 2rem;">
+        <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--primary-gradient); border-radius: 16px; color: var(--white);">
+         <div style="font-size: 2rem; animation: pulse 2s infinite;">
+          🚚
+         </div>
+         <div>
+          <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Lightning Fast Delivery</h4>
+          <p style="margin: 0; color: var(--white);">Super quick and reliable shipping to your doorstep</p>
+         </div>
+        </div>
+        <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--secondary-gradient); border-radius: 16px; color: var(--white);">
+         <div style="font-size: 2rem; animation: pulse 2s infinite;">
+          💯
+         </div>
+         <div>
+          <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Premium Quality</h4>
+          <p style="margin: 0; color: var(--white);">100% authentic products with lifetime warranty</p>
+         </div>
+        </div>
+        <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--success-gradient); border-radius: 16px; color: var(--white);">
+         <div style="font-size: 2rem; animation: pulse 2s infinite;">
+          🔒
+         </div>
+         <div>
+          <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Ultra Secure</h4>
+          <p style="margin: 0; color: var(--white);">Your data and payments are fortress-protected</p>
+         </div>
+        </div>
+        <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--warning-gradient); border-radius: 16px; color: var(--white);">
+         <div style="font-size: 2rem; animation: pulse 2s infinite;">
+          🎧
+         </div>
+         <div>
+          <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">24/7 VIP Support</h4>
+          <p style="margin: 0; color: var(--white);">Round-the-clock premium customer service</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Contact Us Page -->
+    <div id="contact-page" class="page-content hidden">
+     <div style="max-width: 800px; margin: 0 auto;">
+      <h2 class="gradient-text" style="margin-bottom: 2rem;">Contact JINKART</h2>
+      <div class="grid grid-2" style="gap: 2rem;"><!-- Contact Form -->
+       <div class="dashboard-content">
+        <h3 class="gradient-text" style="margin-bottom: 1.5rem;">Send us a Message</h3>
+        <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+         <div class="form-group"><label for="contact-name" class="form-label">Full Name</label> <input type="text" id="contact-name" class="form-input" required>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+         </div>
+         <div class="form-group"><label for="contact-email" class="form-label">Email Address</label> <input type="email" id="contact-email" class="form-input" required>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+         </div>
+         <div class="form-group"><label for="contact-subject" class="form-label">Subject</label> <input type="text" id="contact-subject" class="form-input" required>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+         </div>
+         <div class="form-group"><label for="contact-message" class="form-label">Message</label> <textarea id="contact-message" rows="5" class="form-input" required></textarea>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+         </div><button type="submit" class="btn bg-gradient-rainbow text-white" style="width: 100%; padding: 1rem;">Send Message 🚀</button>
+        </form>
+       </div><!-- Contact Information -->
+       <div class="dashboard-content">
+        <h3 class="gradient-text" style="margin-bottom: 1.5rem;">Get in Touch</h3>
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+         <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--primary-gradient); border-radius: 16px; color: var(--white);">
+          <div style="font-size: 2rem; animation: pulse 2s infinite;">
+           📧
+          </div>
+          <div>
+           <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Email</h4>
+           <p id="contact-email-display" style="margin: 0; font-size: 1.125rem; color: var(--white);">support@jinkart.com</p>
+          </div>
+         </div>
+         <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--success-gradient); border-radius: 16px; color: var(--white);">
+          <div style="font-size: 2rem; animation: pulse 2s infinite;">
+           📞
+          </div>
+          <div>
+           <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Phone</h4>
+           <p id="contact-phone-display" style="margin: 0; font-size: 1.125rem; color: var(--white);">+91 98765 43210</p>
+          </div>
+         </div>
+         <div class="flex align-center" style="gap: 1rem; padding: 1rem; background: var(--warning-gradient); border-radius: 16px; color: var(--white);">
+          <div style="font-size: 2rem; animation: pulse 2s infinite;">
+           🕒
+          </div>
+          <div>
+           <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white);">Business Hours</h4>
+           <p style="margin: 0; font-size: 1.125rem; color: var(--white);">Monday - Friday: 9:00 AM - 8:00 PM<br>
+            Saturday - Sunday: 10:00 AM - 6:00 PM</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- User Dashboard -->
+    <div id="dashboard-page" class="page-content hidden">
+     <h2 class="gradient-text" style="margin-bottom: 2rem;">🎯 My JINKART Dashboard</h2><!-- Dashboard Navigation -->
+     <div class="dashboard-tabs"><button class="dashboard-tab bg-gradient-primary text-white" data-tab="orders">📦 My Orders</button> <button class="dashboard-tab bg-gray-300 text-gray-700" data-tab="wishlist">❤️ Wishlist</button> <button class="dashboard-tab bg-gray-300 text-gray-700" data-tab="reviews">⭐ Reviews</button> <button class="dashboard-tab bg-gray-300 text-gray-700" data-tab="support">🎧 Customer Care</button> <button class="dashboard-tab bg-gray-300 text-gray-700" data-tab="reports">📊 Reports</button>
+     </div><!-- Orders Tab -->
+     <div id="orders-tab" class="dashboard-content">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">📦 My Orders</h3>
+      <div id="orders-list" style="display: flex; flex-direction: column; gap: 1rem;"><!-- Orders will be populated here -->
+      </div>
+      <div id="no-orders" class="text-center" style="padding: 3rem 0; color: var(--gray-500);">
+       <div style="font-size: 5rem; margin-bottom: 1rem; animation: pulse 2s infinite;">
+        📦
+       </div>
+       <p style="font-size: 1.25rem; font-weight: 600;">No orders yet. Start shopping to see your orders here!</p>
+      </div>
+     </div><!-- Wishlist Tab -->
+     <div id="wishlist-tab" class="dashboard-content hidden">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">❤️ My Wishlist</h3>
+      <div id="wishlist-items" class="grid grid-3"><!-- Wishlist items will be populated here -->
+      </div>
+      <div id="no-wishlist" class="text-center" style="padding: 3rem 0; color: var(--gray-500);">
+       <div style="font-size: 5rem; margin-bottom: 1rem; animation: pulse 2s infinite;">
+        ❤️
+       </div>
+       <p style="font-size: 1.25rem; font-weight: 600;">Your wishlist is empty. Add some amazing products!</p>
+      </div>
+     </div><!-- Reviews Tab -->
+     <div id="reviews-tab" class="dashboard-content hidden">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">⭐ My Reviews &amp; Comments</h3>
+      <div id="reviews-list" style="display: flex; flex-direction: column; gap: 1rem;"><!-- Reviews will be populated here -->
+      </div>
+      <div id="no-reviews" class="text-center" style="padding: 3rem 0; color: var(--gray-500);">
+       <div style="font-size: 5rem; margin-bottom: 1rem; animation: pulse 2s infinite;">
+        ⭐
+       </div>
+       <p style="font-size: 1.25rem; font-weight: 600;">No reviews yet. Purchase products to leave reviews!</p>
+      </div>
+     </div><!-- Customer Care Tab -->
+     <div id="support-tab" class="dashboard-content hidden">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">🎧 Customer Care</h3><!-- Support Options -->
+      <div class="grid grid-2" style="gap: 2rem; margin-bottom: 2rem;">
+       <div style="background: var(--primary-gradient); border-radius: 16px; padding: 2rem; color: var(--white); cursor: pointer; transition: all 0.3s ease;" class="stat-card">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem; animation: pulse 2s infinite;">
+         💬
+        </div>
+        <h4 style="font-weight: bold; font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Live Chat</h4>
+        <p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--white);">Get instant help from our amazing support team</p><button class="btn" style="background: var(--white); color: #7c3aed; padding: 0.75rem 1.5rem;" onclick="showNotification('Live chat feature coming soon! 🚀', 'info')">Start Chat</button>
+       </div>
+       <div style="background: var(--success-gradient); border-radius: 16px; padding: 2rem; color: var(--white); cursor: pointer; transition: all 0.3s ease;" class="stat-card">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem; animation: pulse 2s infinite;">
+         📞
+        </div>
+        <h4 style="font-weight: bold; font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Phone Support</h4>
+        <p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--white);">Call us for immediate VIP assistance</p><button class="btn" style="background: var(--white); color: #059669; padding: 0.75rem 1.5rem;" onclick="showNotification('Please call +91 98765 43210 📞', 'info')">Call Now</button>
+       </div>
+      </div><!-- Support Tickets -->
+      <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1.5rem;" class="gradient-text">🎫 Support Tickets</h4>
+      <div id="support-tickets" style="display: flex; flex-direction: column; gap: 1rem;"><!-- Support tickets will be populated here -->
+      </div>
+     </div><!-- Reports Tab -->
+     <div id="reports-tab" class="dashboard-content hidden">
+      <h3 class="gradient-text" style="margin-bottom: 1.5rem;">📊 Reports &amp; Analytics</h3>
+      <div class="grid grid-3">
+       <div class="stat-card bg-gradient-primary">
+        <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 1rem; color: var(--white);">📈 Order History</h4>
+        <p id="total-orders" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--white);">0</p>
+        <p style="font-size: 1.125rem; margin: 0; color: var(--white);">Total Orders</p>
+       </div>
+       <div class="stat-card bg-gradient-success">
+        <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 1rem; color: var(--white);">💰 Total Spent</h4>
+        <p id="total-spent" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--white);">₹0</p>
+        <p style="font-size: 1.125rem; margin: 0; color: var(--white);">All Time</p>
+       </div>
+       <div class="stat-card bg-gradient-secondary">
+        <h4 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 1rem; color: var(--white);">🏆 Favorite Category</h4>
+        <p id="favorite-category" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--white);">Electronics</p>
+        <p style="font-size: 1.125rem; margin: 0; color: var(--white);">Most Purchased</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main><!-- Login/Register Modal -->
+  <div id="auth-modal" class="modal-backdrop hidden">
+   <div class="modal-content">
+    <div class="modal-body"><!-- Modal Header -->
+     <div class="modal-header">
+      <h2 id="auth-title" class="modal-title gradient-text">Login</h2><button id="close-modal" class="close-btn">×</button>
+     </div><!-- Login Form -->
+     <form id="login-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="form-group"><label for="login-email" class="form-label">Email Address</label> <input type="email" id="login-email" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div>
+      <div class="form-group"><label for="login-password" class="form-label">Password</label> <input type="password" id="login-password" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div><button type="submit" class="btn bg-gradient-primary text-white" style="width: 100%; padding: 1rem;">Login 🚀</button>
+     </form><!-- Register Form -->
+     <form id="register-form" class="hidden" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="form-group"><label for="register-name" class="form-label">Full Name</label> <input type="text" id="register-name" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div>
+      <div class="form-group"><label for="register-email" class="form-label">Email Address</label> <input type="email" id="register-email" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div>
+      <div class="form-group"><label for="register-phone" class="form-label">Phone Number</label> <input type="tel" id="register-phone" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div>
+      <div class="form-group"><label for="register-password" class="form-label">Password</label> <input type="password" id="register-password" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div>
+      <div class="form-group"><label for="register-confirm-password" class="form-label">Confirm Password</label> <input type="password" id="register-confirm-password" class="form-input" required>
+       <div class="error-message hidden"></div>
+       <div class="success-message hidden"></div>
+      </div><button type="submit" class="btn bg-gradient-success text-white" style="width: 100%; padding: 1rem;">Register 🎉</button>
+     </form><!-- Toggle Forms -->
+     <div class="auth-toggle-section">
+      <p class="auth-toggle-text"><span id="auth-toggle-text">Don't have an account?</span> <button id="auth-toggle" class="auth-toggle-btn">Register</button></p>
+     </div>
+    </div>
+   </div>
+  </div><!-- Notification Toast -->
+  <div id="notification" class="notification bg-gradient-success text-white hidden">
+   <div class="notification-content"><span id="notification-text">Success!</span> <button id="close-notification" class="close-btn" style="color: var(--white); font-size: 1.5rem;">×</button>
+   </div>
+  </div>
+
+
+ </body>
+</html>
